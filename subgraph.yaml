@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PhoenixDAO
+    network: mainnet
+    source:
+      address: "0x38A2fDc11f526Ddd5a607C1F251C065f40fBF2f7"
+      abi: PhoenixDAO
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Burn
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: PhoenixDAO
+          file: ./abis/PhoenixDAO.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Burn(indexed address,uint256)
+          handler: handleBurn
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
