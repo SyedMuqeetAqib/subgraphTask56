@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: PhoenixDAO
@@ -20,7 +20,7 @@ dataSources:
         - Transfer
       abis:
         - name: PhoenixDAO
-          file: ./abis/PhoenixDAO.json
+          file: PhoenixDAO\abis\PhoenixDAO.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
@@ -30,4 +30,4 @@ dataSources:
           handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/mapping.ts
+      file: PhoenixDAO\PhoenixDAO.wasm
